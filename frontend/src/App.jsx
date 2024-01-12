@@ -1,5 +1,5 @@
 import React from "react";
-
+import PhotoFavButton from "./components/PhotoFavButton";
 import PhotoListItem from "./components/PhotoListItem";
 import "./App.scss";
 
@@ -26,7 +26,12 @@ for (let i = 0; i < 3; i++) {
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  return <div className="App">{photoArray}</div>;
+  return (
+    <div className="App">
+      {photoArray}
+      <PhotoFavButton />
+    </div>
+  );
 };
 
 export default App;
