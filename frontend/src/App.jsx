@@ -26,12 +26,7 @@ for (let i = 0; i < 3; i++) {
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  return (
-    <div className="App">
-      {photoArray}
-      <PhotoFavButton />
-    </div>
-  );
+  return <div className="App">{photoArray}</div>;
 };
 
 export default App;
