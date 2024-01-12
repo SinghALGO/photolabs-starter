@@ -18,7 +18,8 @@ for (let i = 0; i < 3; i++) {
   photoArray.push(
     <PhotoListItem
       key={i}
-      sampleDataForPhotoListItem={sampleDataForPhotoListItem}
+      photo={sampleDataForPhotoListItem}
+      imageSource={sampleDataForPhotoListItem.imageSource}
     />
   );
 }
