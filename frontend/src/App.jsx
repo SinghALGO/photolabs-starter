@@ -1,7 +1,5 @@
 import React from "react";
-import PhotoList from "components/PhotoList";
-import TopicList from "components/TopicList";
-import TopNavigationBar from "components/TopNavigationBar";
+import HomeRoute from "routes/HomeRoute";
 import "./App.scss";
 
 // let photoArray = [];
@@ -19,7 +17,7 @@ import "./App.scss";
 const App = () => {
   return (
     <div className="App">
-      <TopNavigationBar />
+      <HomeRoute />
     </div>
   );
 };
