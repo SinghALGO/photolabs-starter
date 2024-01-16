@@ -9,7 +9,7 @@ const HomeRoute = ({ topics, photos }) => {
   const likePhotoHandler = (photoId) => {
     const isPhotoAlreadyLiked = likePhotoArray.includes(photoId);
     const newLikedArray = isPhotoAlreadyLiked
-      ? likePhotoArray.filter((photo) => photo != photoId)
+      ? likePhotoArray.filter((photo) => photo !== photoId)
       : [...likePhotoArray, photoId];
     setLikePhotoArray(newLikedArray);
   };
