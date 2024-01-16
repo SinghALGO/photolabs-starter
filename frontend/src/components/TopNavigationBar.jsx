@@ -4,7 +4,7 @@ import TopicList from "./TopicList";
 import "../styles/TopNavigationBar.scss";
 
 const TopNavigation = ({ topics, favoriteArray }) => {
-  const doesFavExist = favoriteArray.length > 0 ? true : false;
+  const doesFavExist = favoriteArray.length > 0;
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
