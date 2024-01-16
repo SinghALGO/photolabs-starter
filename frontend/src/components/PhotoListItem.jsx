@@ -2,13 +2,19 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ photo, imageSource, likePhotoHandler }) => {
+const PhotoListItem = ({
+  photo,
+  imageSource,
+  likePhotoHandler,
+  favoriteArray,
+}) => {
   const onLike = () => {
     likePhotoHandler(photo.id);
   };
+  const likeFlag = favoriteArray.includes(photo.id);
   return (
     <section className="photo-list__item">
-      <PhotoFavButton onLike={onLike} />
+      <PhotoFavButton onLike={onLike} likeFlag={likeFlag} />
       <img className="photo-list__image" src={imageSource}></img>
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={photo.profile}></img>

@@ -3,7 +3,7 @@ import React from "react";
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
-const PhotoList = ({ photos, likePhotoHandler }) => {
+const PhotoList = ({ photos, likePhotoHandler, favoriteArray }) => {
   const photoArray = photos.map((photo) => {
     const { user, location, urls, id } = photo;
     const photoObj = {
@@ -18,6 +18,7 @@ const PhotoList = ({ photos, likePhotoHandler }) => {
         imageSource={urls.regular}
         photo={photoObj}
         likePhotoHandler={likePhotoHandler}
+        favoriteArray={favoriteArray}
       />
     );
   });

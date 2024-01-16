@@ -8,18 +8,19 @@ const HomeRoute = ({ topics, photos }) => {
 
   const likePhotoHandler = (photoId) => {
     const isPhotoAlreadyLiked = likePhotoArray.includes(photoId);
-    const newLikedArray = [];
-    if (isPhotoAlreadyLiked) {
-      newLikedArray = likePhotoArray.filter((photo) => photo != photoId);
-    } else {
-      newLikedArray = [...likePhotoArray, photoId];
-    }
+    const newLikedArray = isPhotoAlreadyLiked
+      ? likePhotoArray.filter((photo) => photo != photoId)
+      : [...likePhotoArray, photoId];
     setLikePhotoArray(newLikedArray);
   };
   return (
     <div className="home-route">
       <TopNavigationBar topics={topics} />
-      <PhotoList photos={photos} likePhotoHandler={likePhotoHandler} />
+      <PhotoList
+        photos={photos}
+        likePhotoHandler={likePhotoHandler}
+        favoriteArray={likePhotoArray}
+      />
     </div>
   );
 };
