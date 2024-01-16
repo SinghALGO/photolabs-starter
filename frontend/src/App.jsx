@@ -8,12 +8,13 @@ const App = () => {
   const [modalStatus, setModalStatus] = useState(false);
   const toggleModal = (photo) => {
     setModalStatus((prev) => !prev);
-    console.log(photo);
   };
   return (
     <div className="App">
       <HomeRoute topics={topics} photos={photos} clickHandler={toggleModal} />
-      {modalStatus && <PhotoDetailsModal clickHandler={toggleModal} />}
+      {modalStatus && (
+        <PhotoDetailsModal clickHandler={toggleModal} photoData={photoData} />
+      )}
     </div>
   );
 };
