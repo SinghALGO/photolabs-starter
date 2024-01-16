@@ -12,7 +12,7 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute topics={topics} photos={photos} clickHandler={toggleModal} />
-      {modalStatus && <PhotoDetailsModal />}
+      {modalStatus && <PhotoDetailsModal clickHandler={toggleModal} />}
     </div>
   );
 };
