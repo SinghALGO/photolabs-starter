@@ -2,7 +2,12 @@ import React from "react";
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
-const PhotoList = ({ photos, likePhotoHandler, favoriteArray }) => {
+const PhotoList = ({
+  photos,
+  likePhotoHandler,
+  favoriteArray,
+  clickHandler,
+}) => {
   const photoArray = photos.map((photo) => {
     const { user, location, urls, id } = photo;
     const photoObj = {
@@ -18,6 +23,7 @@ const PhotoList = ({ photos, likePhotoHandler, favoriteArray }) => {
         photo={photoObj}
         likePhotoHandler={likePhotoHandler}
         favoriteArray={favoriteArray}
+        clickHandler={clickHandler}
       />
     );
   });

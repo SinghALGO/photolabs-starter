@@ -3,7 +3,7 @@ import TopNavigationBar from "components/TopNavigationBar";
 import PhotoList from "components/PhotoList";
 import "../styles/HomeRoute.scss";
 
-const HomeRoute = ({ topics, photos }) => {
+const HomeRoute = ({ topics, photos, clickHandler }) => {
   const [likePhotoArray, setLikePhotoArray] = useState([]);
 
   const likePhotoHandler = (photoId) => {
@@ -20,6 +20,7 @@ const HomeRoute = ({ topics, photos }) => {
         photos={photos}
         likePhotoHandler={likePhotoHandler}
         favoriteArray={likePhotoArray}
+        clickHandler={clickHandler}
       />
     </div>
   );

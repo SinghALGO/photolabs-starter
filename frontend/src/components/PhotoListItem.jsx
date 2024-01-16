@@ -7,13 +7,14 @@ const PhotoListItem = ({
   imageSource,
   likePhotoHandler,
   favoriteArray,
+  clickHandler,
 }) => {
   const onLike = () => {
     likePhotoHandler(photo.id);
   };
   const likeFlag = favoriteArray.includes(photo.id);
   return (
-    <section className="photo-list__item">
+    <section className="photo-list__item" onClick={clickHandler}>
       <PhotoFavButton onLike={onLike} likeFlag={likeFlag} />
       <img className="photo-list__image" src={imageSource}></img>
       <div className="photo-list__user-details">
