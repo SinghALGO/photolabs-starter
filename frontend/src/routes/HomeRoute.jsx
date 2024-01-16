@@ -15,7 +15,7 @@ const HomeRoute = ({ topics, photos }) => {
   };
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} />
+      <TopNavigationBar topics={topics} favoriteArray={likePhotoArray} />
       <PhotoList
         photos={photos}
         likePhotoHandler={likePhotoHandler}
