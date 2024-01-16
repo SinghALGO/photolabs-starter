@@ -7,13 +7,12 @@ const HomeRoute = ({ topics, photos }) => {
   const [likePhotoArray, setLikePhotoArray] = useState([]);
 
   const likePhotoHandler = (photoId) => {
-    const likedIds = likePhotoArray.map((photo) => photo.id);
-    const isPhotoAlreadyLiked = likedIds.includes(photoId);
+    const isPhotoAlreadyLiked = likePhotoArray.includes(photoId);
     const newLikedArray = [];
     if (isPhotoAlreadyLiked) {
-      newLikedArray = likePhotoArray.filter((photo) => photo.id != photoId);
+      newLikedArray = likePhotoArray.filter((photo) => photo != photoId);
     } else {
-      newLikedArray = [...likePhotoArray, photos[photoId]];
+      newLikedArray = [...likePhotoArray, photoId];
     }
     setLikePhotoArray(newLikedArray);
   };
