@@ -6,8 +6,11 @@ import closeSymbol from "../assets/closeSymbol.svg";
 const PhotoDetailsModal = ({ clickHandler }) => {
   return (
     <div className="photo-details-modal">
-      <button className="photo-details-modal__close-button">
-        <img src={closeSymbol} alt="close symbol" onClick={clickHandler} />
+      <button
+        className="photo-details-modal__close-button"
+        onClick={() => clickHandler(undefined)}
+      >
+        <img src={closeSymbol} alt="close symbol" />
       </button>
     </div>
   );

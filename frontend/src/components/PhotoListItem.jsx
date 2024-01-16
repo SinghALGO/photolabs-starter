@@ -12,6 +12,9 @@ const PhotoListItem = ({
   const onLike = () => {
     likePhotoHandler(photo.id);
   };
+  const onPhotoClick = () => {
+    clickHandler(photo.id);
+  };
   const likeFlag = favoriteArray.includes(photo.id);
   return (
     <section className="photo-list__item">
@@ -19,7 +22,7 @@ const PhotoListItem = ({
       <img
         className="photo-list__image"
         src={imageSource}
-        onClick={clickHandler}
+        onClick={onPhotoClick}
       ></img>
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={photo.profile}></img>
