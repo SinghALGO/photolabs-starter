@@ -6,7 +6,9 @@ import photos from "./mocks/photos";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
 const App = () => {
   const [modalStatus, setModalStatus] = useState(false);
+  const [photoData, setPhotoData] = useState("");
   const toggleModal = (photo) => {
+    setPhotoData(photo);
     setModalStatus((prev) => !prev);
   };
   return (
