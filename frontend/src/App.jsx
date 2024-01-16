@@ -6,12 +6,12 @@ import photos from "./mocks/photos";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
 const App = () => {
   const [modalStatus, setModalStatus] = useState(false);
-  const clickHandler = () => {
+  const toggleModal = () => {
     setModalStatus((prev) => !prev);
   };
   return (
     <div className="App">
-      <HomeRoute topics={topics} photos={photos} clickHandler={clickHandler} />
+      <HomeRoute topics={topics} photos={photos} clickHandler={toggleModal} />
       {modalStatus && <PhotoDetailsModal />}
     </div>
   );

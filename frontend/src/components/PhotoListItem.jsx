@@ -14,9 +14,13 @@ const PhotoListItem = ({
   };
   const likeFlag = favoriteArray.includes(photo.id);
   return (
-    <section className="photo-list__item" onClick={clickHandler}>
+    <section className="photo-list__item">
       <PhotoFavButton onLike={onLike} likeFlag={likeFlag} />
-      <img className="photo-list__image" src={imageSource}></img>
+      <img
+        className="photo-list__image"
+        src={imageSource}
+        onClick={clickHandler}
+      ></img>
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={photo.profile}></img>
         <div>
