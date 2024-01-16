@@ -13,7 +13,7 @@ const PhotoListItem = ({
     likePhotoHandler(photo.id);
   };
   const onPhotoClick = () => {
-    clickHandler(photo.id);
+    clickHandler(photo);
   };
   const likeFlag = favoriteArray.includes(photo.id);
   return (
