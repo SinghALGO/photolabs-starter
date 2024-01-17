@@ -10,7 +10,6 @@ const PhotoDetailsModal = ({
   favoriteArray,
 }) => {
   const similar_array = Object.values(photoData[0].similar_photos);
-  console.log(similar_array);
   return (
     <div className="photo-details-modal">
       <button
@@ -19,14 +18,22 @@ const PhotoDetailsModal = ({
       >
         <img src={closeSymbol} alt="close symbol" />
       </button>
-      <div className="photo-details-modal__image">
-        <PhotoList
-          photos={photoData}
-          likePhotoHandler={likePhotoHandler}
-          favoriteArray={favoriteArray}
-          clickHandler={clickHandler}
-        />
+
+      <img
+        src={photoData[0].urls.full}
+        alt="selected photo"
+        className="photo-details-modal__image"
+      />
+      <div className="photo-details-modal__photographer-details">
+        <img src={photoData[0].user.profile} alt="photographer profile" />
+        <div className="photo-details-modal__photographer-info">
+          {photoData[0].user.name}
+          <div className="photo-details-modal__photographer-location">
+            {photoData[0].location.city}, {photoData[0].location.country}
+          </div>
+        </div>
       </div>
+
       <h1 className="photo-details-modal__header">Similar Photos</h1>
       <PhotoList
         photos={similar_array}
