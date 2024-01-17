@@ -1,7 +1,8 @@
 import React from "react";
 import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
-import PhotoList from "components/PhotoList";
+import PhotoList from "../components/PhotoList";
+import PhotoFavButton from "../components/PhotoFavButton";
 
 const PhotoDetailsModal = ({
   clickHandler,
@@ -10,6 +11,10 @@ const PhotoDetailsModal = ({
   favoriteArray,
 }) => {
   const similar_array = Object.values(photoData[0].similar_photos);
+  const likeFlag = favoriteArray.includes(photoData[0].id);
+  const onLike = () => {
+    likePhotoHandler(photoData[0].id);
+  };
   return (
     <div className="photo-details-modal">
       <button
@@ -18,29 +23,35 @@ const PhotoDetailsModal = ({
       >
         <img src={closeSymbol} alt="close symbol" />
       </button>
-
-      <img
-        src={photoData[0].urls.full}
-        alt="selected photo"
-        className="photo-details-modal__image"
-      />
-      <div className="photo-details-modal__photographer-details">
-        <img src={photoData[0].user.profile} alt="photographer profile" />
-        <div className="photo-details-modal__photographer-info">
-          {photoData[0].user.name}
-          <div className="photo-details-modal__photographer-location">
-            {photoData[0].location.city}, {photoData[0].location.country}
+      <div className="photo-details-modal__images">
+        <PhotoFavButton onLike={onLike} likeFlag={likeFlag} />
+        <img
+          src={photoData[0].urls.full}
+          alt="selected photo"
+          className="photo-details-modal__image"
+        />
+        <div className="photo-details-modal__top-bar">
+          <img
+            src={photoData[0].user.profile}
+            alt="photographer profile"
+            className="photo-details-modal__photographer-profile"
+          />
+          <div className="photo-details-modal__photographer-info">
+            {photoData[0].user.name}
+            <div className="photo-details-modal__photographer-location">
+              {photoData[0].location.city}, {photoData[0].location.country}
+            </div>
           </div>
         </div>
-      </div>
 
-      <h1 className="photo-details-modal__header">Similar Photos</h1>
-      <PhotoList
-        photos={similar_array}
-        likePhotoHandler={likePhotoHandler}
-        favoriteArray={favoriteArray}
-        clickHandler={clickHandler}
-      />
+        <p className="photo-details-modal__header">Similar Photos</p>
+        <PhotoList
+          photos={similar_array}
+          likePhotoHandler={likePhotoHandler}
+          favoriteArray={favoriteArray}
+          clickHandler={clickHandler}
+        />
+      </div>
     </div>
   );
 };
