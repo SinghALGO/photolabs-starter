@@ -3,23 +3,20 @@ import TopNavigationBar from "components/TopNavigationBar";
 import PhotoList from "components/PhotoList";
 import "../styles/HomeRoute.scss";
 
-const HomeRoute = ({ topics, photos, clickHandler }) => {
-  const [likePhotoArray, setLikePhotoArray] = useState([]);
-
-  const likePhotoHandler = (photoId) => {
-    const isPhotoAlreadyLiked = likePhotoArray.includes(photoId);
-    const newLikedArray = isPhotoAlreadyLiked
-      ? likePhotoArray.filter((photo) => photo !== photoId)
-      : [...likePhotoArray, photoId];
-    setLikePhotoArray(newLikedArray);
-  };
+const HomeRoute = ({
+  topics,
+  photos,
+  clickHandler,
+  favoriteArray,
+  likePhotoHandler,
+}) => {
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} favoriteArray={likePhotoArray} />
+      <TopNavigationBar topics={topics} favoriteArray={favoriteArray} />
       <PhotoList
         photos={photos}
         likePhotoHandler={likePhotoHandler}
-        favoriteArray={likePhotoArray}
+        favoriteArray={favoriteArray}
         clickHandler={clickHandler}
       />
     </div>
