@@ -1,28 +1,46 @@
-import { React, useState } from "react";
-import topics from "../mocks/topics";
+import { useReducer } from "react";
 import photos from "../mocks/photos";
 const useApplicationData = () => {
-  const [modalStatus, setModalStatus] = useState(false);
-  const [photoData, setPhotoData] = useState("");
+  const initialState = {
+    modalStatus: false,
+    photoData: "",
+    likePhotoArray: [],
+  };
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "TOGGLE_MODAL":
+        return { ...state, modalStatus: !state.modalStatus };
+      case "SET_MODAL_DATA":
+        return { ...state, photoData: action.payload };
+      case "TOGGLE_LIKE_PHOTO":
+        const isPhotoAlreadyLiked = state.likePhotoArray.includes(
+          action.payload
+        );
+        const newLikedArray = isPhotoAlreadyLiked
+          ? state.likePhotoArray.filter((photo) => photo !== action.payload)
+          : [...state.likePhotoArray, action.payload];
+        return { ...state, likePhotoArray: newLikedArray };
+      default:
+        return state;
+    }
+  };
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   const toggleModal = (photo) => {
     let data;
     if (photo) {
       data = photos.filter((photoEle) => photoEle.id === photo.id);
     }
-    setPhotoData(data);
-    setModalStatus((prev) => !prev);
+    dispatch({ type: "SET_MODAL_DATA", payload: data });
+    dispatch({ type: "TOGGLE_MODAL" });
   };
-  const [likePhotoArray, setLikePhotoArray] = useState([]);
+
   const likePhotoHandler = (photoId) => {
-    const isPhotoAlreadyLiked = likePhotoArray.includes(photoId);
-    const newLikedArray = isPhotoAlreadyLiked
-      ? likePhotoArray.filter((photo) => photo !== photoId)
-      : [...likePhotoArray, photoId];
-    setLikePhotoArray(newLikedArray);
+    dispatch({ type: "TOGGLE_LIKE_PHOTO", payload: photoId });
   };
 
   return {
-    state: { modalStatus, photoData, likePhotoArray },
+    state,
     likePhotoHandler,
     toggleModal,
   };
