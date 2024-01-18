@@ -1,8 +1,6 @@
-import { React, useState } from "react";
+import { React } from "react";
 import HomeRoute from "routes/HomeRoute";
 import "./App.scss";
-import topics from "./mocks/topics";
-import photos from "./mocks/photos";
 import useApplicationData from "./hooks/useApplicationData";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
 const App = () => {
@@ -10,8 +8,8 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute
-        topics={topics}
-        photos={photos}
+        topics={state.topics}
+        photos={state.photos}
         clickHandler={toggleModal}
         favoriteArray={state.likePhotoArray}
         likePhotoHandler={likePhotoHandler}

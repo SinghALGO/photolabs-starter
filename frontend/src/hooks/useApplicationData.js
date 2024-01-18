@@ -1,17 +1,31 @@
-import { useReducer } from "react";
-import photos from "../mocks/photos";
+import { useReducer, useEffect } from "react";
+import axios from "axios";
 const useApplicationData = () => {
   const initialState = {
     modalStatus: false,
     photoData: "",
     likePhotoArray: [],
+    photos: [],
+    topics: [],
   };
   const reducer = (state, action) => {
     switch (action.type) {
-      case "TOGGLE_MODAL":
-        return { ...state, modalStatus: !state.modalStatus };
       case "SET_MODAL_DATA":
-        return { ...state, photoData: action.payload };
+        return {
+          ...state,
+          photoData: action.payload,
+          modalStatus: !state.modalStatus,
+        };
+      case "ADD_PHOTO_DATA":
+        return {
+          ...state,
+          photos: action.payload,
+        };
+      case "ADD_TOPIC_DATA":
+        return {
+          ...state,
+          topics: action.payload,
+        };
       case "TOGGLE_LIKE_PHOTO":
         const isPhotoAlreadyLiked = state.likePhotoArray.includes(
           action.payload
@@ -21,18 +35,39 @@ const useApplicationData = () => {
           : [...state.likePhotoArray, action.payload];
         return { ...state, likePhotoArray: newLikedArray };
       default:
-        return state;
+        throw new Error(`Unhandled action type: ${action.type}`);
     }
   };
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  useEffect(() => {
+    axios
+      .get("/api/photos")
+      .then((response) => {
+        dispatch({ type: "ADD_PHOTO_DATA", payload: response.data });
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("/api/topics")
+      .then((response) => {
+        dispatch({ type: "ADD_TOPIC_DATA", payload: response.data });
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
   const toggleModal = (photo) => {
     let data;
     if (photo) {
-      data = photos.filter((photoEle) => photoEle.id === photo.id);
+      data = state.photos.filter((photoEle) => photoEle.id === photo.id);
     }
     dispatch({ type: "SET_MODAL_DATA", payload: data });
-    dispatch({ type: "TOGGLE_MODAL" });
   };
 
   const likePhotoHandler = (photoId) => {
