@@ -51,24 +51,16 @@ npm start
 
 ### PhotoLabs Homepage
 
-!["Homepage"](https://raw.githubusercontent.com/SinghALGO/tweeter/master/docs/Screenshot%202023-12-07%20190752.png)
+!["Homepage"](https://github.com/SinghALGO/photolabs-starter/blob/main/documents/Screenshot-a.png?raw=true)
 
-### Add a new tweet
+### Expanded view of photo when it is clicked
 
-!["Add a new tweet"](https://raw.githubusercontent.com/SinghALGO/tweeter/master/docs/Screenshot%202023-12-07%20190849.png)
+!["View a larger photo"](https://github.com/SinghALGO/photolabs-starter/blob/main/documents/Screenshot-b.png?raw=true)
 
-### Counter shows tweet exceeds length of 140
+### Similar photos shown when a photo is clicked
 
-!["Counter shows tweet exceeds length of 140"](https://raw.githubusercontent.com/SinghALGO/tweeter/master/docs/Screenshot%202023-12-07%20191050.png)
+!["Similar photos"](https://github.com/SinghALGO/photolabs-starter/blob/main/documents/Screenshot-c.png?raw=true)
 
-### Error when tweet exceeds length of 140
+### Option to like a photo and notification in the top bar when a photo is liked
 
-!["Error when tweet exceeds length of 140"](https://raw.githubusercontent.com/SinghALGO/tweeter/master/docs/Screenshot%202023-12-07%20191118.png)
-
-### Error when tweet is empty
-
-!["Error when tweet is empty"](https://raw.githubusercontent.com/SinghALGO/tweeter/master/docs/Screenshot%202023-12-07%20191146.png)
-
-```
-
-```
+!["Option to like a photo"](https://github.com/SinghALGO/photolabs-starter/blob/main/documents/Screenshot-d.png?raw=true)
