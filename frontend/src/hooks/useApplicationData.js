@@ -7,6 +7,7 @@ const useApplicationData = () => {
     likePhotoArray: [],
     photos: [],
     topics: [],
+    topicId: "",
   };
   const reducer = (state, action) => {
     switch (action.type) {
@@ -25,6 +26,11 @@ const useApplicationData = () => {
         return {
           ...state,
           topics: action.payload,
+        };
+      case "SET_TOPIC_ID":
+        return {
+          ...state,
+          topicId: action.payload,
         };
       case "TOGGLE_LIKE_PHOTO":
         const isPhotoAlreadyLiked = state.likePhotoArray.includes(
@@ -52,6 +58,19 @@ const useApplicationData = () => {
   }, []);
 
   useEffect(() => {
+    if (state.topicId) {
+      axios
+        .get(`/api/topics/photos/${state.topicId}`)
+        .then((response) => {
+          dispatch({ type: "ADD_PHOTO_DATA", payload: response.data });
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    }
+  }, [state.topicId]);
+
+  useEffect(() => {
     axios
       .get("/api/topics")
       .then((response) => {
@@ -69,6 +88,9 @@ const useApplicationData = () => {
     }
     dispatch({ type: "SET_MODAL_DATA", payload: data });
   };
+  const topicClickHandler = (topicId) => {
+    dispatch({ type: "SET_TOPIC_ID", payload: topicId });
+  };
 
   const likePhotoHandler = (photoId) => {
     dispatch({ type: "TOGGLE_LIKE_PHOTO", payload: photoId });
@@ -78,6 +100,7 @@ const useApplicationData = () => {
     state,
     likePhotoHandler,
     toggleModal,
+    topicClickHandler,
   };
 };
 export default useApplicationData;

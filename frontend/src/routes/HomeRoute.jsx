@@ -9,10 +9,15 @@ const HomeRoute = ({
   clickHandler,
   favoriteArray,
   likePhotoHandler,
+  topicClickHandler,
 }) => {
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} favoriteArray={favoriteArray} />
+      <TopNavigationBar
+        topics={topics}
+        favoriteArray={favoriteArray}
+        topicClickHandler={topicClickHandler}
+      />
       <PhotoList
         photos={photos}
         likePhotoHandler={likePhotoHandler}
