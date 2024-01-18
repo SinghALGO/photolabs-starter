@@ -59,6 +59,13 @@ const useApplicationData = () => {
     dispatch({ type: "SET_TOPIC_ID", payload: topicId });
   };
 
+  const seeFavPics = () => {
+    const favPicsArrayOfObjs = state.photos.filter((photoEle) =>
+      state.likePhotoArray.includes(photoEle.id)
+    );
+    dispatch({ type: "ADD_PHOTO_DATA", payload: favPicsArrayOfObjs });
+  };
+
   const likePhotoHandler = (photoId) => {
     dispatch({ type: "TOGGLE_LIKE_PHOTO", payload: photoId });
   };
@@ -68,6 +75,7 @@ const useApplicationData = () => {
     likePhotoHandler,
     toggleModal,
     topicClickHandler,
+    seeFavPics,
   };
 };
 export default useApplicationData;

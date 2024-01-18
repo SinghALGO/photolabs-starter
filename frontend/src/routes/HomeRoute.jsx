@@ -10,6 +10,7 @@ const HomeRoute = ({
   favoriteArray,
   likePhotoHandler,
   topicClickHandler,
+  seeFavPics,
 }) => {
   return (
     <div className="home-route">
@@ -17,6 +18,7 @@ const HomeRoute = ({
         topics={topics}
         favoriteArray={favoriteArray}
         topicClickHandler={topicClickHandler}
+        seeFavPics={seeFavPics}
       />
       <PhotoList
         photos={photos}

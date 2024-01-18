@@ -4,8 +4,13 @@ import "./App.scss";
 import useApplicationData from "./hooks/useApplicationData";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
 const App = () => {
-  const { state, likePhotoHandler, toggleModal, topicClickHandler } =
-    useApplicationData();
+  const {
+    state,
+    likePhotoHandler,
+    toggleModal,
+    topicClickHandler,
+    seeFavPics,
+  } = useApplicationData();
   return (
     <div className="App">
       <HomeRoute
@@ -15,6 +20,7 @@ const App = () => {
         favoriteArray={state.likePhotoArray}
         likePhotoHandler={likePhotoHandler}
         topicClickHandler={topicClickHandler}
+        seeFavPics={seeFavPics}
       />
       {state.modalStatus && (
         <PhotoDetailsModal

@@ -26,6 +26,7 @@ const reducer = (state, action) => {
       const newLikedArray = isPhotoAlreadyLiked
         ? state.likePhotoArray.filter((photo) => photo !== action.payload)
         : [...state.likePhotoArray, action.payload];
+      console.log(newLikedArray);
       return { ...state, likePhotoArray: newLikedArray };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
