@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState } from "react";
 import HomeRoute from "routes/HomeRoute";
 import "./App.scss";
 import useApplicationData from "./hooks/useApplicationData";
@@ -11,8 +11,12 @@ const App = () => {
     topicClickHandler,
     seeFavPics,
   } = useApplicationData();
+  const [dark, setDark] = useState("false");
+  const modeToggler = (mode) => {
+    setDark(mode === "Light" ? false : true);
+  };
   return (
-    <div className="App">
+    <div className={dark ? "App" : "App-dark"}>
       <HomeRoute
         topics={state.topics}
         photos={state.photos}
@@ -21,9 +25,11 @@ const App = () => {
         likePhotoHandler={likePhotoHandler}
         topicClickHandler={topicClickHandler}
         seeFavPics={seeFavPics}
+        modeToggler={modeToggler}
       />
       {state.modalStatus && (
         <PhotoDetailsModal
+          darkMode={dark}
           clickHandler={toggleModal}
           photoData={state.photoData}
           likePhotoHandler={likePhotoHandler}

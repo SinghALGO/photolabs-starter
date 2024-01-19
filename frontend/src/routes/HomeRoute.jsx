@@ -11,6 +11,7 @@ const HomeRoute = ({
   likePhotoHandler,
   topicClickHandler,
   seeFavPics,
+  modeToggler,
 }) => {
   return (
     <div className="home-route">
@@ -19,6 +20,7 @@ const HomeRoute = ({
         favoriteArray={favoriteArray}
         topicClickHandler={topicClickHandler}
         seeFavPics={seeFavPics}
+        modeToggler={modeToggler}
       />
       <PhotoList
         photos={photos}

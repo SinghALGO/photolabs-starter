@@ -9,6 +9,7 @@ const PhotoDetailsModal = ({
   photoData,
   likePhotoHandler,
   favoriteArray,
+  darkMode,
 }) => {
   const similar_array = Object.values(photoData[0].similar_photos);
   const likeFlag = favoriteArray.includes(photoData[0].id);
@@ -16,7 +17,9 @@ const PhotoDetailsModal = ({
     likePhotoHandler(photoData[0].id);
   };
   return (
-    <div className="photo-details-modal">
+    <div
+      className={darkMode ? "photo-details-modal" : "photo-details-modal-dark"}
+    >
       <button
         className="photo-details-modal__close-button"
         onClick={() => clickHandler(undefined)}
