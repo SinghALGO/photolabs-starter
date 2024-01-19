@@ -4,15 +4,15 @@ Photolabs is a simple, single-page photos rendering project built using React.
 
 ## Getting Started
 
-1. Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
-2. ## [Frontend] Running Webpack Development Server
+1. ## Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
+2. ## Running Webpack Development Server
 
 ```sh
 cd frontend
 npm start
 ```
 
-3. ## [Backend] Running Backend Server
+3. ## Running Backend Server
 
 Read `backend/readme` for further setup details.
 
