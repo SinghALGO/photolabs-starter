@@ -16,6 +16,7 @@ const PhotoDetailsModal = ({
   const onLike = () => {
     likePhotoHandler(photoData[0].id);
   };
+
   return (
     <div
       className={darkMode ? "photo-details-modal" : "photo-details-modal-dark"}

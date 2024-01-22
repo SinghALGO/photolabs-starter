@@ -24,7 +24,7 @@ const useApplicationData = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
-  //useEffect runs when topicId state changes. It checks it topicId state is defined and is not null,empty or undefined, this way it wont run on intial render.
+  //useEffect runs when topicId state changes. It checks if topicId state is defined and is not null,empty or undefined, this way it wont run on intial render.
   useEffect(() => {
     if (state.topicId) {
       axios

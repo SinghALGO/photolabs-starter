@@ -15,6 +15,7 @@ const PhotoListItem = ({
   const onPhotoClick = () => {
     clickHandler(photo);
   };
+
   const likeFlag = favoriteArray.includes(photo.id);
   return (
     <section className="photo-list__item">

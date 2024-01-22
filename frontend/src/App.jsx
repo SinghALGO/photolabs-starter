@@ -12,6 +12,7 @@ const App = () => {
     seeFavPics,
   } = useApplicationData();
   const [dark, setDark] = useState("false");
+  //function to set state of dark depending on the arguement to the function
   const modeToggler = (mode) => {
     setDark(mode === "Light" ? false : true);
   };

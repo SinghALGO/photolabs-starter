@@ -1,4 +1,4 @@
-//Reucer function has been moved to separate file to improve readability
+//Reducer function has been moved to separate file to improve readability
 const reducer = (state, action) => {
   switch (action.type) {
     //This case will send photo data to modal and toggle modal status(true or false)
